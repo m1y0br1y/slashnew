@@ -216,20 +216,26 @@
   /* ── Card ── */
   .card {
     background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 0.9rem 1rem;
-    position: relative;
-    transition: border-color 0.15s;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: background 0.15s;
   }
 
-  .card:active { border-color: #444; }
+  .card-band {
+    height: 5px;
+  }
+  .card.arena .card-band      { background: var(--arena); }
+  .card.extra .card-band      { background: var(--extra); }
+  .card.panel-card .card-band { background: var(--accent); }
+
+  .card-body {
+    padding: 0.9rem 1rem;
+  }
+
+  .card:active { background: var(--surface2); }
 
   /* current session highlight */
-  .card.is-now {
-    border-color: var(--accent);
-    background: #181e08;
-  }
+  .card.is-now { background: #181e08; }
   .now-badge {
     display: inline-block;
     font-size: 0.65rem;
@@ -256,13 +262,12 @@
     height: 42px;
     border-radius: 50%;
     background: var(--surface2);
-    border: 2px solid var(--border);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 800;
+    font-weight: 700;
     font-size: 0.72rem;
-    color: var(--accent);
+    color: var(--muted);
     flex-shrink: 0;
     letter-spacing: -0.02em;
   }
@@ -283,26 +288,25 @@
     line-height: 1.3;
   }
 
-  .speaker-company { font-weight: 600; color: var(--accent-dim); }
+  .speaker-company { color: var(--muted); }
 
   .room-badge {
     font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
+    font-weight: 600;
+    letter-spacing: 0.03em;
     text-transform: uppercase;
     padding: 0.2rem 0.5rem;
-    border-radius: 4px;
+    border-radius: 3px;
     white-space: nowrap;
     flex-shrink: 0;
     align-self: flex-start;
-    border: 1px solid;
   }
 
-  .room-badge.arena { background: transparent; color: #93c5fd; border-color: rgba(59,130,246,0.35); }
-  .room-badge.extra { background: transparent; color: #d8b4fe; border-color: rgba(168,85,247,0.35); }
+  .room-badge.arena { background: rgba(59,130,246,0.12); color: #93c5fd; }
+  .room-badge.extra { background: rgba(168,85,247,0.12); color: #d8b4fe; }
 
   .talk-title {
-    font-size: 0.88rem;
+    font-size: 0.95rem;
     font-weight: 700;
     color: var(--text);
     margin-bottom: 0.5rem;
@@ -432,8 +436,8 @@
 
     .break-row { grid-template-columns: 80px 1fr; gap: 0 1.25rem; padding: 0 2rem; }
 
-    .card { padding: 1.1rem 1.4rem; }
-    .card:hover { border-color: #444; }
+    .card-body { padding: 1.1rem 1.4rem; }
+    .card:hover { background: var(--surface2); }
     .link-btn:hover { border-color: var(--accent); color: var(--accent); }
 
     .avatar { width: 50px; height: 50px; font-size: 0.85rem; }
@@ -492,6 +496,8 @@
     <div class="slot-time">10:30</div>
     <div class="slot-content">
       <div class="card arena">
+        <div class="card-band"></div>
+        <div class="card-body">
         <div class="card-header">
           <div class="avatar">LFJ</div>
           <div class="card-name-block">
@@ -509,6 +515,7 @@
           <a class="link-btn" href="https://au.linkedin.com/in/efong" target="_blank">LinkedIn</a>
           <a class="link-btn" href="https://x.com/lizthegrey" target="_blank">@lizthegrey</a>
         </div>
+        </div>
       </div>
     </div>
   </div>
@@ -519,6 +526,8 @@
     <div class="slot-content split">
 
       <div class="card arena">
+        <div class="card-band"></div>
+        <div class="card-body">
         <div class="card-header">
           <div class="avatar">BG</div>
           <div class="card-name-block">
@@ -532,9 +541,12 @@
           <div class="bio">IT technical specialist at the ATO with a focus on the measurable value of user support and education programs within large government organisations.</div>
           <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
         </div>
+        </div>
       </div>
 
       <div class="card extra">
+        <div class="card-band"></div>
+        <div class="card-body">
         <div class="card-header">
           <div class="avatar">SB</div>
           <div class="card-name-block">
@@ -552,6 +564,7 @@
           <a class="link-btn" href="https://au.linkedin.com/in/simone-bennett-aa109447" target="_blank">LinkedIn</a>
           <a class="link-btn" href="https://www.simonebennett.com.au" target="_blank">Website</a>
         </div>
+        </div>
       </div>
 
     </div>
@@ -567,6 +580,8 @@
     <div class="slot-time">12:30</div>
     <div class="slot-content">
       <div class="card panel-card">
+        <div class="card-band"></div>
+        <div class="card-body">
         <div class="card-header">
           <div class="card-name-block">
             <div class="speaker-name">WITH Panel</div>
@@ -622,6 +637,7 @@
           <a class="link-btn" href="https://www.newcastle.edu.au/profile/jacqueline-d-bailey" target="_blank">Dr Bailey</a>
           <a class="link-btn" href="https://www.linkedin.com/in/victoria-aspden-93089918b/" target="_blank">Victoria</a>
         </div>
+        </div>
       </div>
     </div>
   </div>
@@ -632,6 +648,8 @@
     <div class="slot-content split">
 
       <div class="card extra">
+        <div class="card-band"></div>
+        <div class="card-body">
         <div class="card-header">
           <div class="avatar">ES</div>
           <div class="card-name-block">
@@ -648,9 +666,12 @@
         <div class="links">
           <a class="link-btn" href="https://au.linkedin.com/in/elena-scifleet-605911164" target="_blank">LinkedIn</a>
         </div>
+        </div>
       </div>
 
       <div class="card arena">
+        <div class="card-band"></div>
+        <div class="card-body">
         <div class="card-header">
           <div class="avatar">BS</div>
           <div class="card-name-block">
@@ -668,6 +689,7 @@
           <a class="link-btn" href="https://www.linkedin.com/in/ben-shelton/" target="_blank">LinkedIn</a>
           <a class="link-btn" href="https://www.newcastle.edu.au/profile/ben-shelton" target="_blank">UoN</a>
         </div>
+        </div>
       </div>
 
     </div>
@@ -679,6 +701,8 @@
     <div class="slot-content split">
 
       <div class="card arena">
+        <div class="card-band"></div>
+        <div class="card-body">
         <div class="card-header">
           <div class="avatar">SH</div>
           <div class="card-name-block">
@@ -695,9 +719,12 @@
         <div class="links">
           <a class="link-btn" href="https://www.linkedin.com/in/shannon-hartley-au/" target="_blank">LinkedIn</a>
         </div>
+        </div>
       </div>
 
       <div class="card extra">
+        <div class="card-band"></div>
+        <div class="card-body">
         <div class="card-header">
           <div class="avatar">DB</div>
           <div class="card-name-block">
@@ -713,6 +740,7 @@
         </div>
         <div class="links">
           <a class="link-btn" href="https://dansclements.com" target="_blank">Website</a>
+        </div>
         </div>
       </div>
 
@@ -731,6 +759,8 @@
 
       <!-- Enterprise panel -->
       <div class="card panel-card">
+        <div class="card-band"></div>
+        <div class="card-body">
         <div class="card-header">
           <div class="card-name-block">
             <div class="speaker-name">AI in the Enterprise Panel</div>
@@ -778,9 +808,12 @@
           <a class="link-btn" href="https://www.linkedin.com/in/andrew-cresp-51732714/" target="_blank">Andrew</a>
           <a class="link-btn" href="https://au.linkedin.com/in/macdonaldjames" target="_blank">James</a>
         </div>
+        </div>
       </div>
 
       <div class="card extra">
+        <div class="card-band"></div>
+        <div class="card-body">
         <div class="card-header">
           <div class="avatar">MP</div>
           <div class="card-name-block">
@@ -799,6 +832,7 @@
           <a class="link-btn" href="https://www.instagram.com/mpadisetti/" target="_blank">Instagram</a>
           <a class="link-btn" href="https://twitter.com/mpadisetti" target="_blank">Twitter</a>
         </div>
+        </div>
       </div>
 
     </div>
@@ -810,6 +844,8 @@
     <div class="slot-content split">
 
       <div class="card arena">
+        <div class="card-band"></div>
+        <div class="card-body">
         <div class="card-header">
           <div class="avatar">DG</div>
           <div class="card-name-block">
@@ -826,9 +862,12 @@
         <div class="links">
           <a class="link-btn" href="https://www.linkedin.com/in/dan-godden/" target="_blank">LinkedIn</a>
         </div>
+        </div>
       </div>
 
       <div class="card extra">
+        <div class="card-band"></div>
+        <div class="card-body">
         <div class="card-header">
           <div class="avatar">NK</div>
           <div class="card-name-block">
@@ -841,6 +880,7 @@
         <div class="bio-wrap">
           <div class="bio">Former mathematician with a PhD from the University of Maryland. Transitioned into software engineering and functional programming at Cartesian Software, Anamorphic Digital and Tarides. Now building TANK — the app fighting burnout in product engineering teams.</div>
           <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
+        </div>
         </div>
       </div>
 
@@ -876,6 +916,8 @@
     <div class="slot-time">10:10</div>
     <div class="slot-content">
       <div class="card arena">
+        <div class="card-band"></div>
+        <div class="card-body">
         <div class="card-header">
           <div class="avatar">JD</div>
           <div class="card-name-block">
@@ -893,6 +935,7 @@
           <a class="link-btn" href="https://www.linkedin.com/in/jovanadjune/" target="_blank">LinkedIn</a>
           <a class="link-btn" href="https://events.atlassian.com/teameurope/speaker/1352379/jovana-dunisijevic" target="_blank">Atlassian</a>
         </div>
+        </div>
       </div>
     </div>
   </div>
@@ -903,6 +946,8 @@
     <div class="slot-content split">
 
       <div class="card arena">
+        <div class="card-band"></div>
+        <div class="card-body">
         <div class="card-header">
           <div class="avatar">FF</div>
           <div class="card-name-block">
@@ -919,9 +964,12 @@
         <div class="links">
           <a class="link-btn" href="https://www.linkedin.com/in/fadila-fidina/" target="_blank">LinkedIn</a>
         </div>
+        </div>
       </div>
 
       <div class="card extra">
+        <div class="card-band"></div>
+        <div class="card-body">
         <div class="card-header">
           <div class="avatar">CW</div>
           <div class="card-name-block">
@@ -940,6 +988,7 @@
           <a class="link-btn" href="https://sessionize.com/callumbwhyte/" target="_blank">Sessionize</a>
           <a class="link-btn" href="https://mvp.microsoft.com/en-US/mvp/profile/5f4e2383-3959-ea11-a812-000d3a8cc689" target="_blank">MVP</a>
         </div>
+        </div>
       </div>
 
     </div>
@@ -956,6 +1005,8 @@
     <div class="slot-content split">
 
       <div class="card arena">
+        <div class="card-band"></div>
+        <div class="card-body">
         <div class="card-header">
           <div class="avatar">MM</div>
           <div class="card-name-block">
@@ -975,9 +1026,12 @@
           <a class="link-btn" href="https://dev.to/msandfor" target="_blank">dev.to</a>
           <a class="link-btn" href="https://sessionize.com/MichelleSandford/" target="_blank">Sessionize</a>
         </div>
+        </div>
       </div>
 
       <div class="card extra">
+        <div class="card-band"></div>
+        <div class="card-body">
         <div class="card-header">
           <div class="avatar">MG</div>
           <div class="card-name-block">
@@ -996,6 +1050,7 @@
           <a class="link-btn" href="https://sessionize.com/matt-goldman/" target="_blank">Sessionize</a>
           <a class="link-btn" href="https://x.com/mattgoldman" target="_blank">@mattgoldman</a>
         </div>
+        </div>
       </div>
 
     </div>
@@ -1007,6 +1062,8 @@
     <div class="slot-content split">
 
       <div class="card arena">
+        <div class="card-band"></div>
+        <div class="card-body">
         <div class="card-header">
           <div class="avatar">NW</div>
           <div class="card-name-block">
@@ -1020,9 +1077,12 @@
           <div class="bio">Principal consultant at Equal Experts with a delivery-focused perspective on integrating robotic and AI systems into real-world engineering workflows.</div>
           <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
         </div>
+        </div>
       </div>
 
       <div class="card extra">
+        <div class="card-band"></div>
+        <div class="card-body">
         <div class="card-header">
           <div class="avatar">VA</div>
           <div class="card-name-block">
@@ -1038,6 +1098,7 @@
         </div>
         <div class="links">
           <a class="link-btn" href="https://www.linkedin.com/in/victoria-aspden-93089918b/" target="_blank">LinkedIn</a>
+        </div>
         </div>
       </div>
 
@@ -1055,6 +1116,8 @@
     <div class="slot-content split">
 
       <div class="card arena">
+        <div class="card-band"></div>
+        <div class="card-body">
         <div class="card-header">
           <div class="avatar">JB</div>
           <div class="card-name-block">
@@ -1071,9 +1134,12 @@
         <div class="links">
           <a class="link-btn" href="https://www.linkedin.com/in/johnbrondum/" target="_blank">LinkedIn</a>
         </div>
+        </div>
       </div>
 
       <div class="card extra">
+        <div class="card-band"></div>
+        <div class="card-body">
         <div class="card-header">
           <div class="avatar">JS</div>
           <div class="card-name-block">
@@ -1092,6 +1158,7 @@
           <a class="link-btn" href="https://au.linkedin.com/in/developerjack" target="_blank">LinkedIn</a>
           <a class="link-btn" href="https://www.instagram.com/developerjack/" target="_blank">Instagram</a>
         </div>
+        </div>
       </div>
 
     </div>
@@ -1103,6 +1170,8 @@
     <div class="slot-content split">
 
       <div class="card arena">
+        <div class="card-band"></div>
+        <div class="card-body">
         <div class="card-header">
           <div class="avatar">CF</div>
           <div class="card-name-block">
@@ -1119,9 +1188,12 @@
         <div class="links">
           <a class="link-btn" href="https://medium.com/@charlotte.fleming" target="_blank">Medium</a>
         </div>
+        </div>
       </div>
 
       <div class="card extra">
+        <div class="card-band"></div>
+        <div class="card-body">
         <div class="card-header">
           <div class="avatar">JM</div>
           <div class="card-name-block">
@@ -1138,6 +1210,7 @@
         <div class="links">
           <a class="link-btn" href="https://au.linkedin.com/in/macdonaldjames" target="_blank">LinkedIn</a>
           <a class="link-btn" href="https://jamesmacdonald.me/" target="_blank">Website</a>
+        </div>
         </div>
       </div>
 
