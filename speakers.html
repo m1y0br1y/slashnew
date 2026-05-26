@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b0b0b">
+<title>/NEW 2026 — Speakers</title>
+<style>
+  :root {
+    --bg: #0b0b0b;
+    --surface: #151515;
+    --surface2: #1e1e1e;
+    --border: #2a2a2a;
+    --accent: #c8f135;
+    --accent-dim: #8aaa22;
+    --text: #f0f0f0;
+    --muted: #888;
+    --arena: #3b82f6;
+    --extra: #a855f7;
+    --nav-h: 64px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    /* room for bottom nav */
+    padding-bottom: calc(var(--nav-h) + env(safe-area-inset-bottom));
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* ── Header ── */
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 0.9rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    color: var(--accent);
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .logo span { color: var(--text); }
+
+  .header-meta {
+    color: var(--muted);
+    font-size: 0.75rem;
+    line-height: 1.3;
+  }
+
+  /* ── Bottom nav ── */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--nav-h);
+    padding-bottom: env(safe-area-inset-bottom);
+    background: #111;
+    border-top: 1px solid var(--border);
+    display: flex;
+    z-index: 200;
+  }
+
+  .bottom-nav button {
+    flex: 1;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    transition: color 0.15s;
+    -webkit-tap-highlight-color: transparent;
+    padding: 0.5rem;
+  }
+
+  .bottom-nav button .nav-icon {
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+
+  .bottom-nav button.active {
+    color: var(--accent);
+  }
+
+  .bottom-nav button.active .nav-dot {
+    display: block;
+  }
+
+  .nav-dot {
+    display: none;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* ── Track legend ── */
+  .track-legend {
+    display: flex;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .track-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.73rem;
+    color: var(--muted);
+  }
+
+  .track-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .track-dot.arena  { background: var(--arena); }
+  .track-dot.extra  { background: var(--extra); }
+  .track-dot.panel  { background: var(--accent); }
+  .track-dot.social { background: #f97316; }
+
+  /* ── Day ── */
+  .day { display: none; padding: 0.75rem 0 1rem; }
+  .day.active { display: block; }
+
+  .day-heading {
+    font-size: 1.15rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    padding: 0.5rem 1rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0.5rem;
+  }
+  .day-heading span { color: var(--accent); }
+
+  /* ── Slot ── */
+  .slot {
+    display: grid;
+    grid-template-columns: 54px 1fr;
+    gap: 0 0.5rem;
+    padding: 0 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .slot-time {
+    padding-top: 1rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--muted);
+    text-align: right;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .slot-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  /* ── Break row ── */
+  .break-row {
+    display: grid;
+    grid-template-columns: 54px 1fr;
+    gap: 0 0.5rem;
+    padding: 0 0.75rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .break-time {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--muted);
+    text-align: right;
+    padding-top: 0.5rem;
+    letter-spacing: 0.02em;
+  }
+
+  .break-label {
+    background: var(--surface);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ── Card ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.9rem 1rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.15s;
+  }
+
+  .card:active { border-color: var(--accent); }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    border-radius: 12px 0 0 12px;
+  }
+
+  .card.arena::before     { background: var(--arena); }
+  .card.extra::before     { background: var(--extra); }
+  .card.panel-card::before { background: var(--accent); }
+
+  /* current session highlight */
+  .card.is-now {
+    border-color: var(--accent);
+    background: #181e08;
+  }
+  .now-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: #000;
+    padding: 0.1rem 0.45rem;
+    border-radius: 4px;
+    margin-bottom: 0.4rem;
+  }
+
+  /* ── Card header ── */
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--surface2);
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.72rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    letter-spacing: -0.02em;
+  }
+
+  .card-name-block { flex: 1; min-width: 0; }
+
+  .speaker-name {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 0.1rem;
+    line-height: 1.2;
+  }
+
+  .speaker-role {
+    font-size: 0.72rem;
+    color: var(--muted);
+    line-height: 1.3;
+  }
+
+  .speaker-company { font-weight: 600; color: var(--accent-dim); }
+
+  .room-badge {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    align-self: flex-start;
+  }
+
+  .room-badge.arena { background: rgba(59,130,246,0.15); color: #93c5fd; }
+  .room-badge.extra { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+
+  .talk-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    line-height: 1.35;
+  }
+
+  /* ── Bio collapsible ── */
+  .bio-wrap {
+    margin-bottom: 0.6rem;
+  }
+
+  .bio {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.55;
+    overflow: hidden;
+    /* clamp to ~3 lines by default */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    transition: all 0.2s;
+  }
+
+  .bio.expanded {
+    display: block;
+    -webkit-line-clamp: unset;
+  }
+
+  .bio-toggle {
+    background: none;
+    border: none;
+    color: var(--accent-dim);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.25rem 0;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* ── Links ── */
+  .links {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-top: 0.4rem;
+  }
+
+  .link-btn {
+    font-size: 0.72rem;
+    font-weight: 600;
+    /* min 44px touch target height */
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    text-decoration: none;
+    background: var(--surface2);
+    -webkit-tap-highlight-color: transparent;
+    transition: color 0.15s, border-color 0.15s;
+    display: inline-block;
+  }
+
+  .link-btn:active {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ── Panel card ── */
+  .panel-speakers {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0.6rem 0;
+  }
+
+  .panelist {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .panelist .avatar {
+    width: 30px;
+    height: 30px;
+    font-size: 0.6rem;
+  }
+
+  .panelist-name { font-size: 0.82rem; font-weight: 700; }
+  .panelist-role { font-size: 0.68rem; color: var(--muted); }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 1.5rem 1rem;
+    color: var(--muted);
+    font-size: 0.75rem;
+  }
+
+  footer a { color: var(--accent); text-decoration: none; }
+
+  /* ── Desktop overrides (side-by-side tracks) ── */
+  @media (min-width: 720px) {
+    body { padding-bottom: 0; }
+
+    header { padding: 1.2rem 2rem; gap: 1.5rem; }
+    .logo { font-size: 1.6rem; }
+    .header-meta { font-size: 0.85rem; }
+
+    /* hide bottom nav, show inline nav */
+    .bottom-nav { display: none; }
+    .desktop-nav { display: flex !important; margin-left: auto; gap: 0.25rem; }
+
+    .track-legend { padding: 0.75rem 2rem; }
+
+    .day { padding: 0 0 3rem; }
+    .day-heading { padding: 1rem 2rem 1rem; font-size: 1.5rem; }
+
+    .slot { grid-template-columns: 80px 1fr; gap: 0 1.25rem; padding: 0 2rem; margin-bottom: 1rem; }
+    .slot-time { font-size: 0.78rem; padding-top: 1.1rem; }
+    .slot-content { gap: 0.75rem; }
+    .slot-content.split { display: grid; grid-template-columns: 1fr 1fr; }
+
+    .break-row { grid-template-columns: 80px 1fr; gap: 0 1.25rem; padding: 0 2rem; }
+
+    .card { padding: 1.1rem 1.4rem; }
+    .card:hover { border-color: var(--accent); transform: translateY(-1px); }
+    .link-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    .avatar { width: 50px; height: 50px; font-size: 0.85rem; }
+    .speaker-name { font-size: 1rem; }
+    .talk-title { font-size: 0.9rem; }
+
+    .bio {
+      -webkit-line-clamp: unset;
+      display: block;
+    }
+    .bio-toggle { display: none; }
+
+    .panel-speakers { flex-direction: row; flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="https://slashnew.tech"><em style="color:var(--accent)">/</em><span>NEW</span> <span style="color:var(--accent)">2026</span></a>
+  <div class="header-meta">May 27–28<br>NEX Newcastle, NSW</div>
+
+  <!-- desktop nav (hidden on mobile, shown via media query) -->
+  <nav class="desktop-nav" style="display:none">
+    <button id="d-btn1" class="active" onclick="showDay(1)">Day 1 — May 27</button>
+    <button id="d-btn2" onclick="showDay(2)">Day 2 — May 28</button>
+  </nav>
+</header>
+
+<div class="track-legend">
+  <div class="track-pill"><div class="track-dot arena"></div>The Arena</div>
+  <div class="track-pill"><div class="track-dot extra"></div>The Extra</div>
+  <div class="track-pill"><div class="track-dot panel"></div>Panel</div>
+  <div class="track-pill"><div class="track-dot social"></div>Social</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     DAY 1
+══════════════════════════════════════════ -->
+<div id="day1" class="day active">
+  <h2 class="day-heading"><span>Day 1</span> — Wed 27 May</h2>
+
+  <div class="break-row">
+    <div class="break-time">8:30</div>
+    <div class="break-label">Registration &amp; Morning Tea — The Avenue</div>
+  </div>
+
+  <div class="break-row">
+    <div class="break-time">10:00</div>
+    <div class="break-label">Conference Welcome — The Arena</div>
+  </div>
+
+  <!-- Liz Fong-Jones -->
+  <div class="slot" data-start="1748302200" data-end="1748305800"><!-- 10:30–11:30 AEST -->
+    <div class="slot-time">10:30</div>
+    <div class="slot-content">
+      <div class="card arena">
+        <div class="card-header">
+          <div class="avatar">LFJ</div>
+          <div class="card-name-block">
+            <div class="speaker-name">Liz Fong-Jones</div>
+            <div class="speaker-role">Technical Fellow · <span class="speaker-company">Honeycomb.io</span></div>
+          </div>
+          <span class="room-badge arena">Arena · Keynote</span>
+        </div>
+        <div class="talk-title">"AI is like chocolate (and observability is like strawberries)"</div>
+        <div class="bio-wrap">
+          <div class="bio">Former Google SRE who worked on Cloud Load Balancer and Google Flights. Co-author of <em>Observability Engineering</em>. Advocate for transgender rights, board member of the National Center for Transgender Equality. Australian permanent resident since 2022, splits time between Sydney and Vancouver.</div>
+          <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
+        </div>
+        <div class="links">
+          <a class="link-btn" href="https://au.linkedin.com/in/efong" target="_blank">LinkedIn</a>
+          <a class="link-btn" href="https://x.com/lizthegrey" target="_blank">@lizthegrey</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11:35 -->
+  <div class="slot" data-start="1748306100" data-end="1748309200"><!-- 11:35–12:20 AEST -->
+    <div class="slot-time">11:35</div>
+    <div class="slot-content split">
+
+      <div class="card arena">
+        <div class="card-header">
+          <div class="avatar">BG</div>
+          <div class="card-name-block">
+            <div class="speaker-name">Bec Gallen</div>
+            <div class="speaker-role">IT Technical Specialist · <span class="speaker-company">Australian Taxation Office</span></div>
+          </div>
+          <span class="room-badge arena">Arena</span>
+        </div>
+        <div class="talk-title">"ROI of User Support and Education"</div>
+        <div class="bio-wrap">
+          <div class="bio">IT technical specialist at the ATO with a focus on the measurable value of user support and education programs within large government organisations.</div>
+          <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
+        </div>
+      </div>
+
+      <div class="card extra">
+        <div class="card-header">
+          <div class="avatar">SB</div>
+          <div class="card-name-block">
+            <div class="speaker-name">Simone Bennett</div>
+            <div class="speaker-role">Product Manager · <span class="speaker-company">Buildkite</span></div>
+          </div>
+          <span class="room-badge extra">Extra</span>
+        </div>
+        <div class="talk-title">"From Delivery to Assembly Line: Making Your Work Feel Automated"</div>
+        <div class="bio-wrap">
+          <div class="bio">25+ years in IT, former Microsoft Solution Architect and Principal Consultant at Arkahna. 2025 Microsoft MVP, ARN Technical Achievement Award winner, and National Women in Digital Industry Excellence Award winner. Advocates for non-traditional pathways into tech.</div>
+          <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
+        </div>
+        <div class="links">
+          <a class="link-btn" href="https://au.linkedin.com/in/simone-bennett-aa109447" target="_blank">LinkedIn</a>
+          <a class="link-btn" href="https://www.simonebennett.com.au" target="_blank">Website</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="break-row">
+    <div class="break-time">12:20</div>
+    <div class="break-label">Lunch &amp; Networking — The Avenue</div>
+  </div>
+
+  <!-- WITH Panel 12:30 -->
+  <div class="slot" data-start="1748309400" data-end="1748313900"><!-- 12:30–13:45 AEST -->
+    <div class="slot-time">12:30</div>
+    <div class="slot-content">
+      <div class="card panel-card">
+        <div class="card-header">
+          <div class="card-name-block">
+            <div class="speaker-name">WITH Panel</div>
+            <div class="speaker-role">Women in Tech · The Extra</div>
+          </div>
+          <span class="room-badge extra">Extra</span>
+        </div>
+        <div class="panel-speakers">
+          <div class="panelist">
+            <div class="avatar">TP</div>
+            <div>
+              <div class="panelist-name">Theresa Payne</div>
+              <div class="panelist-role">Head of Engineering · The Iconic</div>
+            </div>
+          </div>
+          <div class="panelist">
+            <div class="avatar">CB</div>
+            <div>
+              <div class="panelist-name">Carolyn Breeze</div>
+              <div class="panelist-role">CEO · Scalare Partners (ASX: SCP)</div>
+            </div>
+          </div>
+          <div class="panelist">
+            <div class="avatar">MS</div>
+            <div>
+              <div class="panelist-name">Margareta Studdert</div>
+              <div class="panelist-role">Head of Digital Workplace · NGM Group</div>
+            </div>
+          </div>
+          <div class="panelist">
+            <div class="avatar">JB</div>
+            <div>
+              <div class="panelist-name">Dr Jacqueline D Bailey</div>
+              <div class="panelist-role">Lecturer &amp; HunterWiSE Rep · UoN</div>
+            </div>
+          </div>
+          <div class="panelist">
+            <div class="avatar">VA</div>
+            <div>
+              <div class="panelist-name">Victoria Aspden</div>
+              <div class="panelist-role">EGM Digital &amp; Transformation · Ampcontrol</div>
+            </div>
+          </div>
+        </div>
+        <div class="bio-wrap">
+          <div class="bio"><strong>Theresa Payne</strong> — Previously Platform Director at News Corp Australia and Senior Manager Digital at ASX. University of Newcastle alumna.<br><br><strong>Carolyn Breeze</strong> — 20+ years in tech, fintech and payments. Alum of GoCardless, Braintree, PayPal, eBay, Vodafone and Telstra. CEO Magazine IT Executive of the Year 2018; Fintech Leader of the Year 2023.<br><br><strong>Margareta Studdert</strong> — Based in Newcastle. Previously at Folksam and PostNord. Passionate about psychological safety, mentoring and diversity in tech.<br><br><strong>Dr Jacqueline D Bailey</strong> — PhD in IT from UoN. Researches human-centred computing and virtual humans in serious gaming and simulation. Teaching Excellence Award winner.<br><br><strong>Victoria Aspden</strong> — Multiple executive roles at CommBank and Colonial First State, Head of Customer &amp; Enterprise Platforms at Great Southern Bank, IT Advisory at KPMG UK and Australia.</div>
+          <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
+        </div>
+        <div class="links">
+          <a class="link-btn" href="https://au.linkedin.com/in/theresa-payne" target="_blank">Theresa</a>
+          <a class="link-btn" href="https://about.me/cbreeze" target="_blank">Carolyn</a>
+          <a class="link-btn" href="https://slashnew.tech/speaker/margareta-studdert/" target="_blank">Margareta</a>
+          <a class="link-btn" href="https://www.newcastle.edu.au/profile/jacqueline-d-bailey" target="_blank">Dr Bailey</a>
+          <a class="link-btn" href="https://www.linkedin.com/in/victoria-aspden-93089918b/" target="_blank">Victoria</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13:20 -->
+  <div class="slot" data-start="1748313600" data-end="1748316300"><!-- 13:20–14:05 AEST -->
+    <div class="slot-time">13:20</div>
+    <div class="slot-content split">
+
+      <div class="card extra">
+        <div class="card-header">
+          <div class="avatar">ES</div>
+          <div class="card-name-block">
+            <div class="speaker-name">Elena Scifleet</div>
+            <div class="speaker-role">Cyber Security Consultant · <span class="speaker-company">CyberCX</span></div>
+          </div>
+          <span class="room-badge extra">Extra</span>
+        </div>
+        <div class="talk-title">"AI-Augmented Incident Response: What to Add, What to Trust, What to Keep Human"</div>
+        <div class="bio-wrap">
+          <div class="bio">Based in Newcastle with 20 years in IT. Helped build the CyberCX Academy curriculum, producing 160+ new cybersecurity professionals. Master's in Cyber Security from Charles Sturt University (postgraduate medal, 6.82 GPA). Founded the AWSN Newcastle chapter; volunteers in the NSW Cyber Ambassador program.</div>
+          <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
+        </div>
+        <div class="links">
+          <a class="link-btn" href="https://au.linkedin.com/in/elena-scifleet-605911164" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="card arena">
+        <div class="card-header">
+          <div class="avatar">BS</div>
+          <div class="card-name-block">
+            <div class="speaker-name">Dr Ben Shelton</div>
+            <div class="speaker-role">Senior Manager, UX · <span class="speaker-company">University of Newcastle</span></div>
+          </div>
+          <span class="room-badge arena">Arena</span>
+        </div>
+        <div class="talk-title">"Designing for the Mind: Using Cognitive Load Theory to Measure Interface Effectiveness"</div>
+        <div class="bio-wrap">
+          <div class="bio">PhD in Computer Science from UoN. Research focuses on cognitive load in ubiquitous computing — how ambient displays can surface information peripherally without increasing users' mental load. Conducted a systematic review of 459 ambient display publications spanning 20 years.</div>
+          <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
+        </div>
+        <div class="links">
+          <a class="link-btn" href="https://www.linkedin.com/in/ben-shelton/" target="_blank">LinkedIn</a>
+          <a class="link-btn" href="https://www.newcastle.edu.au/profile/ben-shelton" target="_blank">UoN</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 14:10 -->
+  <div class="slot" data-start="1748316600" data-end="1748319300"><!-- 14:10–14:55 AEST -->
+    <div class="slot-time">14:10</div>
+    <div class="slot-content split">
+
+      <div class="card arena">
+        <div class="card-header">
+          <div class="avatar">SH</div>
+          <div class="card-name-block">
+            <div class="speaker-name">Shannon Hartley</div>
+            <div class="speaker-role">Enterprise Architect · <span class="speaker-company">CEnet</span></div>
+          </div>
+          <span class="room-badge arena">Arena</span>
+        </div>
+        <div class="talk-title">"Engineering Innocence: The Ethics of Dark Patterns and the Next Generation"</div>
+        <div class="bio-wrap">
+          <div class="bio">Enterprise architect and conference speaker with a passion for technology ethics. Brings an architectural lens to the ethical choices baked into digital product design — particularly their impact on children and the next generation.</div>
+          <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
+        </div>
+        <div class="links">
+          <a class="link-btn" href="https://www.linkedin.com/in/shannon-hartley-au/" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="card extra">
+        <div class="card-header">
+          <div class="avatar">DB</div>
+          <div class="card-name-block">
+            <div class="speaker-name">Daniel Bartosiewcz-Clements</div>
+            <div class="speaker-role">Senior SecOps Manager · <span class="speaker-company">nib</span></div>
+          </div>
+          <span class="room-badge extra">Extra</span>
+        </div>
+        <div class="talk-title">"From Alert Fatigue to AI-First: A Leader's Guide to Modernising SecOps"</div>
+        <div class="bio-wrap">
+          <div class="bio">Security operations leader at Newcastle-based health insurer nib. Practitioner's perspective on evolving security operations from reactive alert triage to AI-augmented, intelligence-driven security programmes.</div>
+          <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
+        </div>
+        <div class="links">
+          <a class="link-btn" href="https://dansclements.com" target="_blank">Website</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="break-row">
+    <div class="break-time">14:55</div>
+    <div class="break-label">Afternoon Tea &amp; Networking — The Avenue</div>
+  </div>
+
+  <!-- 15:25 -->
+  <div class="slot" data-start="1748321100" data-end="1748323800"><!-- 15:25–16:10 AEST -->
+    <div class="slot-time">15:25</div>
+    <div class="slot-content split">
+
+      <!-- Enterprise panel -->
+      <div class="card panel-card">
+        <div class="card-header">
+          <div class="card-name-block">
+            <div class="speaker-name">AI in the Enterprise Panel</div>
+            <div class="speaker-role">Past the Hype, Into the Work</div>
+          </div>
+          <span class="room-badge arena">Arena</span>
+        </div>
+        <div class="panel-speakers">
+          <div class="panelist">
+            <div class="avatar">KS</div>
+            <div>
+              <div class="panelist-name">Katherine Squire</div>
+              <div class="panelist-role">Program Advisory · SET Strategies</div>
+            </div>
+          </div>
+          <div class="panelist">
+            <div class="avatar">JD</div>
+            <div>
+              <div class="panelist-name">Josh Doolan</div>
+              <div class="panelist-role">MD APAC · Endava</div>
+            </div>
+          </div>
+          <div class="panelist">
+            <div class="avatar">AC</div>
+            <div>
+              <div class="panelist-name">Andrew Cresp</div>
+              <div class="panelist-role">CIO · NGM Group</div>
+            </div>
+          </div>
+          <div class="panelist">
+            <div class="avatar">JM</div>
+            <div>
+              <div class="panelist-name">James MacDonald</div>
+              <div class="panelist-role">MD · NTP Talent</div>
+            </div>
+          </div>
+        </div>
+        <div class="bio-wrap">
+          <div class="bio"><strong>Katherine Squire</strong> — Former GM Application Development &amp; DevOps at ASX. Deep background in financial services technology leadership.<br><br><strong>Josh Doolan</strong> — Founded Mudbath Digital in Newcastle in 2014, grew it to ~100 people across Newcastle, Sydney and Melbourne, then led it through acquisition by Endava. Now leads Endava's APAC expansion.<br><br><strong>Andrew Cresp</strong> — Former CIO at Bendigo &amp; Adelaide Bank where he piloted generative AI cutting legacy modernisation costs by up to 90%. Previously GM Core Banking Technology at NAB.<br><br><strong>James MacDonald</strong> — Founder of NewyTechPeople &amp; NTP Talent. Co-founder of NewyStartUps. Director of Hunter Angels.</div>
+          <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
+        </div>
+        <div class="links">
+          <a class="link-btn" href="https://www.linkedin.com/in/katherinesquire/" target="_blank">Katherine</a>
+          <a class="link-btn" href="https://www.linkedin.com/in/josh-doolan-bb08a622/" target="_blank">Josh</a>
+          <a class="link-btn" href="https://www.linkedin.com/in/andrew-cresp-51732714/" target="_blank">Andrew</a>
+          <a class="link-btn" href="https://au.linkedin.com/in/macdonaldjames" target="_blank">James</a>
+        </div>
+      </div>
+
+      <div class="card extra">
+        <div class="card-header">
+          <div class="avatar">MP</div>
+          <div class="card-name-block">
+            <div class="speaker-name">Maria Padisetti</div>
+            <div class="speaker-role">CEO · <span class="speaker-company">Digital Armour</span></div>
+          </div>
+          <span class="room-badge extra">Extra</span>
+        </div>
+        <div class="talk-title">"Why Brilliant Technical People Struggle to Be Heard"</div>
+        <div class="bio-wrap">
+          <div class="bio">Co-founded Digital Armour from her kitchen table two decades ago, building it from an MSP into a business and technology consultancy. Was managing 40 people at 24 in New Zealand's engineering sector. Author, podcaster, mentor, and two-time winner of the National Customer Excellence &amp; Innovation Award.</div>
+          <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
+        </div>
+        <div class="links">
+          <a class="link-btn" href="https://www.linkedin.com/in/mariapadisetti/" target="_blank">LinkedIn</a>
+          <a class="link-btn" href="https://www.instagram.com/mpadisetti/" target="_blank">Instagram</a>
+          <a class="link-btn" href="https://twitter.com/mpadisetti" target="_blank">Twitter</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 16:15 -->
+  <div class="slot" data-start="1748324100" data-end="1748326800"><!-- 16:15–17:00 AEST -->
+    <div class="slot-time">16:15</div>
+    <div class="slot-content split">
+
+      <div class="card arena">
+        <div class="card-header">
+          <div class="avatar">DG</div>
+          <div class="card-name-block">
+            <div class="speaker-name">Dan Godden</div>
+            <div class="speaker-role">Founder &amp; Principal · <span class="speaker-company">SolveSimple</span></div>
+          </div>
+          <span class="room-badge arena">Arena</span>
+        </div>
+        <div class="talk-title">"Stop Rolling Out, Start Bringing People Along"</div>
+        <div class="bio-wrap">
+          <div class="bio">Unusual career journey from primary school teacher and pastor into change management, specialising in the Salesforce ecosystem. Works with CIOs and digital leaders on the human side of technology adoption — moving from implementation to sustained use.</div>
+          <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
+        </div>
+        <div class="links">
+          <a class="link-btn" href="https://www.linkedin.com/in/dan-godden/" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="card extra">
+        <div class="card-header">
+          <div class="avatar">NK</div>
+          <div class="card-name-block">
+            <div class="speaker-name">Navin Keswani</div>
+            <div class="speaker-role">Co-Founder &amp; CPTO · <span class="speaker-company">TANK</span></div>
+          </div>
+          <span class="room-badge extra">Extra</span>
+        </div>
+        <div class="talk-title">"Beat Burnout, Find Flourishing: AI Edition"</div>
+        <div class="bio-wrap">
+          <div class="bio">Former mathematician with a PhD from the University of Maryland. Transitioned into software engineering and functional programming at Cartesian Software, Anamorphic Digital and Tarides. Now building TANK — the app fighting burnout in product engineering teams.</div>
+          <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="break-row">
+    <div class="break-time">17:00</div>
+    <div class="break-label" style="border-color:#f97316; color:#f97316;">🍻 ACE Networking Event hosted by Atlassian — The Avenue (until 19:00)</div>
+  </div>
+
+</div><!-- /day1 -->
+
+
+<!-- ══════════════════════════════════════════
+     DAY 2
+══════════════════════════════════════════ -->
+<div id="day2" class="day">
+  <h2 class="day-heading"><span>Day 2</span> — Thu 28 May</h2>
+
+  <div class="break-row">
+    <div class="break-time">8:30</div>
+    <div class="break-label">Registration &amp; Morning Tea — The Avenue</div>
+  </div>
+
+  <div class="break-row">
+    <div class="break-time">10:00</div>
+    <div class="break-label">Conference Welcome — The Arena</div>
+  </div>
+
+  <!-- Jovana keynote -->
+  <div class="slot" data-start="1748386200" data-end="1748389800"><!-- 10:10–11:10 AEST Day 2 -->
+    <div class="slot-time">10:10</div>
+    <div class="slot-content">
+      <div class="card arena">
+        <div class="card-header">
+          <div class="avatar">JD</div>
+          <div class="card-name-block">
+            <div class="speaker-name">Jovana Dunisijevic</div>
+            <div class="speaker-role">Senior Technical Evangelist · <span class="speaker-company">Atlassian</span></div>
+          </div>
+          <span class="room-badge arena">Arena · Keynote</span>
+        </div>
+        <div class="talk-title">"Humans In The Loop – Why the Future of AI Still Belongs to Us"</div>
+        <div class="bio-wrap">
+          <div class="bio">Moved from Serbia to Sydney in 2017 on an internship visa. Spent years as a software engineer on Jira before moving into platform engineering and then developer advocacy. Evangelises Rovo Dev, Atlassian's AI-augmented development tooling. Finalist, Software Engineer of the Year at the 2022 Australia Women in Digital Awards.</div>
+          <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
+        </div>
+        <div class="links">
+          <a class="link-btn" href="https://www.linkedin.com/in/jovanadjune/" target="_blank">LinkedIn</a>
+          <a class="link-btn" href="https://events.atlassian.com/teameurope/speaker/1352379/jovana-dunisijevic" target="_blank">Atlassian</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11:15 -->
+  <div class="slot" data-start="1748390100" data-end="1748393100"><!-- 11:15–12:05 AEST -->
+    <div class="slot-time">11:15</div>
+    <div class="slot-content split">
+
+      <div class="card arena">
+        <div class="card-header">
+          <div class="avatar">FF</div>
+          <div class="card-name-block">
+            <div class="speaker-name">Fadila Fidina</div>
+            <div class="speaker-role">Senior Software Engineer · <span class="speaker-company">Atlassian</span></div>
+          </div>
+          <span class="room-badge arena">Arena</span>
+        </div>
+        <div class="talk-title">"Change is Only Good When Measured: Building Confidence Through Experimentation"</div>
+        <div class="bio-wrap">
+          <div class="bio">Studied IT at UTS, started as a junior business analyst before teaching herself to code. Quickly became a senior engineer working across frontend and backend. Specialises in feature experimentation — shipping confidently without turning your codebase into spaghetti. Outside work: bakes, paints, and photographs.</div>
+          <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
+        </div>
+        <div class="links">
+          <a class="link-btn" href="https://www.linkedin.com/in/fadila-fidina/" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="card extra">
+        <div class="card-header">
+          <div class="avatar">CW</div>
+          <div class="card-name-block">
+            <div class="speaker-name">Callum Whyte</div>
+            <div class="speaker-role">Technical Director · <span class="speaker-company">Bump Digital</span></div>
+          </div>
+          <span class="room-badge extra">Extra</span>
+        </div>
+        <div class="talk-title">"Leading Successful Remote Teams"</div>
+        <div class="bio-wrap">
+          <div class="bio">6× Microsoft MVP and 8× Umbraco MVP. Leads the award-winning team at Bump across the UK and Australia. Active open-source contributor and community organiser; co-hosts the weekly <em>UmbraCoffee</em> YouTube series. Has delivered this talk at NDC Oslo, NDC Copenhagen, and TDC 2025.</div>
+          <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
+        </div>
+        <div class="links">
+          <a class="link-btn" href="https://au.linkedin.com/in/callumbwhyte" target="_blank">LinkedIn</a>
+          <a class="link-btn" href="https://sessionize.com/callumbwhyte/" target="_blank">Sessionize</a>
+          <a class="link-btn" href="https://mvp.microsoft.com/en-US/mvp/profile/5f4e2383-3959-ea11-a812-000d3a8cc689" target="_blank">MVP</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="break-row">
+    <div class="break-time">12:00</div>
+    <div class="break-label">Lunch &amp; Networking — The Avenue</div>
+  </div>
+
+  <!-- 13:00 -->
+  <div class="slot" data-start="1748394000" data-end="1748396700"><!-- 13:00–13:45 AEST -->
+    <div class="slot-time">13:00</div>
+    <div class="slot-content split">
+
+      <div class="card arena">
+        <div class="card-header">
+          <div class="avatar">MM</div>
+          <div class="card-name-block">
+            <div class="speaker-name">Michelle Mei-Ling Sandford</div>
+            <div class="speaker-role">Developer Engagement Lead · <span class="speaker-company">Microsoft Asia</span></div>
+          </div>
+          <span class="room-badge arena">Arena</span>
+        </div>
+        <div class="talk-title">"Trustworthy AI: Keeping Humans at the Heart of Intelligent Systems"</div>
+        <div class="bio-wrap">
+          <div class="bio">TEDx speaker. Presents at ~50 conferences a year on AI, Azure, GitHub, open source and game dev. Vice Chair of the Australian Computer Society (WA). Mentors for Code Without Barriers, She Codes Australia, Girls Programming Network and others. Passionate advocate for diversity and young people in tech.</div>
+          <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
+        </div>
+        <div class="links">
+          <a class="link-btn" href="https://www.linkedin.com/in/michellesandford/" target="_blank">LinkedIn</a>
+          <a class="link-btn" href="https://github.com/codess-aus" target="_blank">GitHub</a>
+          <a class="link-btn" href="https://dev.to/msandfor" target="_blank">dev.to</a>
+          <a class="link-btn" href="https://sessionize.com/MichelleSandford/" target="_blank">Sessionize</a>
+        </div>
+      </div>
+
+      <div class="card extra">
+        <div class="card-header">
+          <div class="avatar">MG</div>
+          <div class="card-name-block">
+            <div class="speaker-name">Matt Goldman</div>
+            <div class="speaker-role">Innovation Consultant · <span class="speaker-company">Arinco</span></div>
+          </div>
+          <span class="room-badge extra">Extra</span>
+        </div>
+        <div class="talk-title">"Everything Is Too Hard"</div>
+        <div class="bio-wrap">
+          <div class="bio">Software developer, author of <em>.NET MAUI in Action</em>, and co-host of the <em>Beer Driven Devs</em> podcast. 15 years in IT spanning systems engineering, management and consulting. Specialises in .NET, Azure, MAUI and Blazor. Presents regularly at .NET user groups across multiple Australian states.</div>
+          <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
+        </div>
+        <div class="links">
+          <a class="link-btn" href="https://www.linkedin.com/in/matt-goldman/" target="_blank">LinkedIn</a>
+          <a class="link-btn" href="https://sessionize.com/matt-goldman/" target="_blank">Sessionize</a>
+          <a class="link-btn" href="https://x.com/mattgoldman" target="_blank">@mattgoldman</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 13:50 -->
+  <div class="slot" data-start="1748397000" data-end="1748399700"><!-- 13:50–14:35 AEST -->
+    <div class="slot-time">13:50</div>
+    <div class="slot-content split">
+
+      <div class="card arena">
+        <div class="card-header">
+          <div class="avatar">NW</div>
+          <div class="card-name-block">
+            <div class="speaker-name">Nick Williams</div>
+            <div class="speaker-role">Principal Consultant · <span class="speaker-company">Equal Experts</span></div>
+          </div>
+          <span class="room-badge arena">Arena</span>
+        </div>
+        <div class="talk-title">"Paving the Road for the Robots"</div>
+        <div class="bio-wrap">
+          <div class="bio">Principal consultant at Equal Experts with a delivery-focused perspective on integrating robotic and AI systems into real-world engineering workflows.</div>
+          <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
+        </div>
+      </div>
+
+      <div class="card extra">
+        <div class="card-header">
+          <div class="avatar">VA</div>
+          <div class="card-name-block">
+            <div class="speaker-name">Victoria Aspden</div>
+            <div class="speaker-role">EGM Digital &amp; Transformation · <span class="speaker-company">Ampcontrol</span></div>
+          </div>
+          <span class="room-badge extra">Extra</span>
+        </div>
+        <div class="talk-title">"How To Make Good Decisions"</div>
+        <div class="bio-wrap">
+          <div class="bio">Executive leader spanning financial services, banking and infrastructure. Multiple executive roles at CommBank and Colonial First State, Head of Customer &amp; Enterprise Platforms at Great Southern Bank, IT Advisory at KPMG UK and Australia. Also speaking on the WITH Panel (Day 1).</div>
+          <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
+        </div>
+        <div class="links">
+          <a class="link-btn" href="https://www.linkedin.com/in/victoria-aspden-93089918b/" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="break-row">
+    <div class="break-time">14:35</div>
+    <div class="break-label">Afternoon Tea &amp; Slow Coffee — The Avenue</div>
+  </div>
+
+  <!-- 15:05 -->
+  <div class="slot" data-start="1748399700" data-end="1748402400"><!-- 15:05–15:50 AEST -->
+    <div class="slot-time">15:05</div>
+    <div class="slot-content split">
+
+      <div class="card arena">
+        <div class="card-header">
+          <div class="avatar">JB</div>
+          <div class="card-name-block">
+            <div class="speaker-name">John Brøndum</div>
+            <div class="speaker-role">Enterprise Architect · <span class="speaker-company">brøndum.au</span></div>
+          </div>
+          <span class="room-badge arena">Arena</span>
+        </div>
+        <div class="talk-title">"Software is Not a (Complete) Solution"</div>
+        <div class="bio-wrap">
+          <div class="bio">Global digital transformation leader with experience across e-commerce, government, finance, healthcare and manufacturing. Expertise spans Microsoft 365, Azure, Google Cloud, CRM, RPA and business process automation. Trusted advisor and principal consultant across multi-industry transformations.</div>
+          <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
+        </div>
+        <div class="links">
+          <a class="link-btn" href="https://www.linkedin.com/in/johnbrondum/" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="card extra">
+        <div class="card-header">
+          <div class="avatar">JS</div>
+          <div class="card-name-block">
+            <div class="speaker-name">Jack Skinner</div>
+            <div class="speaker-role">CTO For Hire · <span class="speaker-company">developerjack.com</span></div>
+          </div>
+          <span class="room-badge extra">Extra</span>
+        </div>
+        <div class="talk-title">"Cleared For Take Off"</div>
+        <div class="bio-wrap">
+          <div class="bio">13+ years in software development and leadership. Conference Director of PyCon AU 2026. Former Microsoft Relations Developer &amp; Program Manager. Founder of FrontGate.app. BSc in IT from UTS. Active Australian tech community speaker, fractional CTO and open-source contributor.</div>
+          <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
+        </div>
+        <div class="links">
+          <a class="link-btn" href="https://www.jackskinner.com.au" target="_blank">Website</a>
+          <a class="link-btn" href="https://au.linkedin.com/in/developerjack" target="_blank">LinkedIn</a>
+          <a class="link-btn" href="https://www.instagram.com/developerjack/" target="_blank">Instagram</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 15:55 -->
+  <div class="slot" data-start="1748402700" data-end="1748405400"><!-- 15:55–16:40 AEST -->
+    <div class="slot-time">15:55</div>
+    <div class="slot-content split">
+
+      <div class="card arena">
+        <div class="card-header">
+          <div class="avatar">CF</div>
+          <div class="card-name-block">
+            <div class="speaker-name">Charlotte Fleming</div>
+            <div class="speaker-role">Tech writer &amp; practitioner</div>
+          </div>
+          <span class="room-badge arena">Arena</span>
+        </div>
+        <div class="talk-title">"The Reality Gap: What AI Needs to Actually Work at Scale"</div>
+        <div class="bio-wrap">
+          <div class="bio">Writes about the gap between AI pilots and production. Argues that Continuous Delivery practices are what let organisations actually scale AI value — relevant given BCG research showing only 21% of AI pilots reach production.</div>
+          <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
+        </div>
+        <div class="links">
+          <a class="link-btn" href="https://medium.com/@charlotte.fleming" target="_blank">Medium</a>
+        </div>
+      </div>
+
+      <div class="card extra">
+        <div class="card-header">
+          <div class="avatar">JM</div>
+          <div class="card-name-block">
+            <div class="speaker-name">James MacDonald</div>
+            <div class="speaker-role">Managing Director · <span class="speaker-company">NTP Talent</span></div>
+          </div>
+          <span class="room-badge extra">Extra</span>
+        </div>
+        <div class="talk-title">"Balance Is a Myth: Why the Best Tech Careers Are Built in Seasons"</div>
+        <div class="bio-wrap">
+          <div class="bio">Founder of NewyTechPeople and NTP Talent. Co-founder of NewyStartUps. Director of Hunter Angels. Hosts multiple podcasts with tens of thousands of downloads on tech talent and trends. Also on the AI in the Enterprise Panel (Day 1).</div>
+          <button class="bio-toggle" onclick="toggleBio(this)">Show more</button>
+        </div>
+        <div class="links">
+          <a class="link-btn" href="https://au.linkedin.com/in/macdonaldjames" target="_blank">LinkedIn</a>
+          <a class="link-btn" href="https://jamesmacdonald.me/" target="_blank">Website</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /day2 -->
+
+<footer>
+  /NEW 2026 · May 27–28 · NEX Newcastle NSW · <a href="https://slashnew.tech">slashnew.tech</a>
+</footer>
+
+<!-- Bottom nav (mobile) -->
+<div class="bottom-nav">
+  <button id="m-btn1" class="active" onclick="showDay(1)">
+    <span class="nav-icon">1️⃣</span>
+    <span>May 27</span>
+    <span class="nav-dot"></span>
+  </button>
+  <button id="m-btn2" onclick="showDay(2)">
+    <span class="nav-icon">2️⃣</span>
+    <span>May 28</span>
+    <span class="nav-dot"></span>
+  </button>
+</div>
+
+<script>
+  function showDay(n) {
+    document.querySelectorAll('.day').forEach(d => d.classList.remove('active'));
+    document.getElementById('day' + n).classList.add('active');
+    ['m-btn1','m-btn2','d-btn1','d-btn2'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove('active');
+    });
+    const mBtn = document.getElementById('m-btn' + n);
+    const dBtn = document.getElementById('d-btn' + n);
+    if (mBtn) mBtn.classList.add('active');
+    if (dBtn) dBtn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleBio(btn) {
+    const bio = btn.previousElementSibling;
+    const expanded = bio.classList.toggle('expanded');
+    btn.textContent = expanded ? 'Show less' : 'Show more';
+  }
+
+  /* Auto-switch to the current conference day and highlight live sessions */
+  function highlightNow() {
+    const now = Math.floor(Date.now() / 1000);
+
+    // determine conference day (AEST = UTC+10)
+    // Day 1: 2026-05-27, Day 2: 2026-05-28
+    const day1Start = 1748296800; // 2026-05-27 08:00 AEST
+    const day1End   = 1748354400; // 2026-05-27 24:00 AEST
+    const day2Start = 1748383200; // 2026-05-28 08:00 AEST
+    const day2End   = 1748440800; // 2026-05-28 24:00 AEST
+
+    if (now >= day1Start && now < day1End) showDay(1);
+    else if (now >= day2Start && now < day2End) showDay(2);
+
+    // highlight current slot cards
+    document.querySelectorAll('.slot[data-start]').forEach(slot => {
+      const start = parseInt(slot.dataset.start);
+      const end   = parseInt(slot.dataset.end);
+      const cards = slot.querySelectorAll('.card');
+
+      if (now >= start && now < end) {
+        cards.forEach(card => {
+          if (!card.querySelector('.now-badge')) {
+            const badge = document.createElement('div');
+            badge.className = 'now-badge';
+            badge.textContent = '▶ NOW';
+            card.insertBefore(badge, card.firstChild);
+          }
+          card.classList.add('is-now');
+        });
+      } else {
+        cards.forEach(card => {
+          card.classList.remove('is-now');
+          const badge = card.querySelector('.now-badge');
+          if (badge) badge.remove();
+        });
+      }
+    });
+  }
+
+  highlightNow();
+  setInterval(highlightNow, 60000); // re-check every minute
+</script>
+
+</body>
+</html>

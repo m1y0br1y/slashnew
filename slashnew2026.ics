@@ -1,0 +1,304 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//SlashNEW 2026//Conference//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:SlashNEW 2026
+X-WR-TIMEZONE:Australia/Sydney
+
+BEGIN:VEVENT
+UID:slashnew-d1-registration@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260527T083000
+DTEND;TZID=Australia/Sydney:20260527T093000
+SUMMARY:Conference Registration – Day 1
+LOCATION:The Avenue, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d1-morning-tea@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260527T093000
+DTEND;TZID=Australia/Sydney:20260527T100000
+SUMMARY:Morning Tea & Networking – Day 1
+LOCATION:The Avenue, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d1-welcome@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260527T100000
+DTEND;TZID=Australia/Sydney:20260527T103000
+SUMMARY:Conference Welcome – Day 1
+LOCATION:The Arena, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d1-liz-fong-jones@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260527T103000
+DTEND;TZID=Australia/Sydney:20260527T113000
+SUMMARY:AI is like chocolate (and observability is like strawberries)
+DESCRIPTION:Speaker: Liz Fong-Jones
+LOCATION:The Arena, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d1-simone-bennett@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260527T113500
+DTEND;TZID=Australia/Sydney:20260527T122000
+SUMMARY:From Delivery to Assembly Line: Making Your Work Feel Automated
+DESCRIPTION:Speaker: Simone Bennett
+LOCATION:The Extra, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d1-bec-gallen@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260527T113500
+DTEND;TZID=Australia/Sydney:20260527T122000
+SUMMARY:ROI of User Support and Education
+DESCRIPTION:Speaker: Bec Gallen
+LOCATION:The Arena, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d1-lunch@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260527T122000
+DTEND;TZID=Australia/Sydney:20260527T133000
+SUMMARY:Lunch & Networking – Day 1
+LOCATION:The Avenue, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d1-with-panel@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260527T123000
+DTEND;TZID=Australia/Sydney:20260527T131500
+SUMMARY:WITH Panel
+DESCRIPTION:Speakers: Theresa Payne, Carolyn Breeze, Margareta Studdert, Dr Jacqueline D Bailey, Victoria Aspden
+LOCATION:The Extra, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d1-elena-scifleet@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260527T132000
+DTEND;TZID=Australia/Sydney:20260527T140500
+SUMMARY:AI-Augmented Incident Response: What to Add, What to Trust, What to Keep Human
+DESCRIPTION:Speaker: Elena Scifleet
+LOCATION:The Extra, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d1-ben-shelton@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260527T132000
+DTEND;TZID=Australia/Sydney:20260527T140500
+SUMMARY:Designing for the Mind: Using Cognitive Load Theory to Measure Interface Effectiveness
+DESCRIPTION:Speaker: Dr Ben Shelton
+LOCATION:The Arena, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d1-shannon-hartley@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260527T141000
+DTEND;TZID=Australia/Sydney:20260527T145500
+SUMMARY:Engineering Innocence: The Ethics of Dark Patterns and the Next Generation
+DESCRIPTION:Speaker: Shannon Hartley
+LOCATION:The Arena, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d1-daniel-b@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260527T141000
+DTEND;TZID=Australia/Sydney:20260527T145500
+SUMMARY:From Alert Fatigue to AI-First: A Leader's Guide to Modernising SecOps
+DESCRIPTION:Speaker: Daniel Bartosiewcz-Clements
+LOCATION:The Extra, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d1-afternoon-tea@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260527T145500
+DTEND;TZID=Australia/Sydney:20260527T152500
+SUMMARY:Afternoon Tea & Networking – Day 1
+LOCATION:The Avenue, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d1-enterprise-panel@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260527T152500
+DTEND;TZID=Australia/Sydney:20260527T161000
+SUMMARY:AI in the Enterprise: Past the Hype, Into the Work (Panel)
+DESCRIPTION:Speakers: Katherine Squire, Josh Doolan, Andrew Cresp, James MacDonald
+LOCATION:The Arena, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d1-maria-padisetti@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260527T152500
+DTEND;TZID=Australia/Sydney:20260527T161000
+SUMMARY:Why Brilliant Technical People Struggle to Be Heard
+DESCRIPTION:Speaker: Maria Padisetti
+LOCATION:The Extra, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d1-navin-keswani@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260527T161500
+DTEND;TZID=Australia/Sydney:20260527T170000
+SUMMARY:Beat Burnout, Find Flourishing: AI Edition
+DESCRIPTION:Speaker: Navin Keswani
+LOCATION:The Extra, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d1-dan-godden@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260527T161500
+DTEND;TZID=Australia/Sydney:20260527T170000
+SUMMARY:Stop Rolling Out, Start Bringing People Along
+DESCRIPTION:Speaker: Dan Godden
+LOCATION:The Arena, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d1-networking@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260527T170000
+DTEND;TZID=Australia/Sydney:20260527T190000
+SUMMARY:ACE Networking Event (hosted by Atlassian)
+LOCATION:The Avenue, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d2-registration@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260528T083000
+DTEND;TZID=Australia/Sydney:20260528T093000
+SUMMARY:Conference Registration – Day 2
+LOCATION:The Avenue, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d2-morning-tea@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260528T093000
+DTEND;TZID=Australia/Sydney:20260528T100000
+SUMMARY:Morning Tea & Networking – Day 2
+LOCATION:The Avenue, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d2-welcome@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260528T100000
+DTEND;TZID=Australia/Sydney:20260528T101000
+SUMMARY:Conference Welcome – Day 2
+LOCATION:The Arena, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d2-jovana@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260528T101000
+DTEND;TZID=Australia/Sydney:20260528T111000
+SUMMARY:Humans In The Loop – Why the Future of AI Still Belongs to Us
+DESCRIPTION:Speaker: Jovana Dunisijevic
+LOCATION:The Arena, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d2-callum-whyte@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260528T111500
+DTEND;TZID=Australia/Sydney:20260528T120000
+SUMMARY:Leading Successful Remote Teams
+DESCRIPTION:Speaker: Callum Whyte
+LOCATION:The Extra, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d2-fadila@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260528T111500
+DTEND;TZID=Australia/Sydney:20260528T120000
+SUMMARY:Change is Only Good When Measured: Building Confidence Through Experimentation
+DESCRIPTION:Speaker: Fadila Fidina
+LOCATION:The Arena, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d2-lunch@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260528T120000
+DTEND;TZID=Australia/Sydney:20260528T130000
+SUMMARY:Lunch & Networking – Day 2
+LOCATION:The Avenue, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d2-michelle-sandford@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260528T130000
+DTEND;TZID=Australia/Sydney:20260528T134500
+SUMMARY:Trustworthy AI: Keeping Humans at the Heart of Intelligent Systems
+DESCRIPTION:Speaker: Michelle Mei-Ling Sandford
+LOCATION:The Arena, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d2-matt-goldman@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260528T130000
+DTEND;TZID=Australia/Sydney:20260528T134500
+SUMMARY:Everything Is Too Hard
+DESCRIPTION:Speaker: Matt Goldman
+LOCATION:The Extra, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d2-victoria-aspden@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260528T135000
+DTEND;TZID=Australia/Sydney:20260528T143500
+SUMMARY:How To Make Good Decisions
+DESCRIPTION:Speaker: Victoria Aspden
+LOCATION:The Extra, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d2-nick-williams@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260528T135000
+DTEND;TZID=Australia/Sydney:20260528T143500
+SUMMARY:Paving the Road for the Robots
+DESCRIPTION:Speaker: Nick Williams
+LOCATION:The Arena, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d2-afternoon-tea@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260528T143500
+DTEND;TZID=Australia/Sydney:20260528T150500
+SUMMARY:Afternoon Tea & Slow Coffee – Day 2
+LOCATION:The Avenue, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d2-john-brondum@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260528T150500
+DTEND;TZID=Australia/Sydney:20260528T155000
+SUMMARY:Software is Not a (Complete) Solution
+DESCRIPTION:Speaker: John Brøndum
+LOCATION:The Arena, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d2-jack-skinner@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260528T150500
+DTEND;TZID=Australia/Sydney:20260528T155000
+SUMMARY:Cleared For Take Off
+DESCRIPTION:Speaker: Jack Skinner
+LOCATION:The Extra, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d2-james-macdonald@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260528T155500
+DTEND;TZID=Australia/Sydney:20260528T164000
+SUMMARY:Balance Is a Myth: Why the Best Tech Careers Are Built in Seasons
+DESCRIPTION:Speaker: James MacDonald
+LOCATION:The Extra, NEX, Newcastle
+END:VEVENT
+
+BEGIN:VEVENT
+UID:slashnew-d2-charlotte-fleming@slashnew.tech
+DTSTART;TZID=Australia/Sydney:20260528T155500
+DTEND;TZID=Australia/Sydney:20260528T164000
+SUMMARY:The Reality Gap: What AI Needs to Actually Work at Scale
+DESCRIPTION:Speaker: Charlotte Fleming
+LOCATION:The Arena, NEX, Newcastle
+END:VEVENT
+
+END:VCALENDAR
