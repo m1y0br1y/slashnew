@@ -220,25 +220,10 @@
     border-radius: 12px;
     padding: 0.9rem 1rem;
     position: relative;
-    overflow: hidden;
     transition: border-color 0.15s;
   }
 
-  .card:active { border-color: var(--accent); }
-
-  .card::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    border-radius: 12px 0 0 12px;
-  }
-
-  .card.arena::before     { background: var(--arena); }
-  .card.extra::before     { background: var(--extra); }
-  .card.panel-card::before { background: var(--accent); }
+  .card:active { border-color: #444; }
 
   /* current session highlight */
   .card.is-now {
@@ -310,10 +295,11 @@
     white-space: nowrap;
     flex-shrink: 0;
     align-self: flex-start;
+    border: 1px solid;
   }
 
-  .room-badge.arena { background: rgba(59,130,246,0.15); color: #93c5fd; }
-  .room-badge.extra { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+  .room-badge.arena { background: transparent; color: #93c5fd; border-color: rgba(59,130,246,0.35); }
+  .room-badge.extra { background: transparent; color: #d8b4fe; border-color: rgba(168,85,247,0.35); }
 
   .talk-title {
     font-size: 0.88rem;
@@ -447,7 +433,7 @@
     .break-row { grid-template-columns: 80px 1fr; gap: 0 1.25rem; padding: 0 2rem; }
 
     .card { padding: 1.1rem 1.4rem; }
-    .card:hover { border-color: var(--accent); transform: translateY(-1px); }
+    .card:hover { border-color: #444; }
     .link-btn:hover { border-color: var(--accent); color: var(--accent); }
 
     .avatar { width: 50px; height: 50px; font-size: 0.85rem; }
