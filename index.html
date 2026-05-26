@@ -1238,7 +1238,7 @@
 </div>
 
 <script>
-  function showDay(n) {
+  function showDay(n, skipScroll) {
     document.querySelectorAll('.day').forEach(d => d.classList.remove('active'));
     document.getElementById('day' + n).classList.add('active');
     ['m-btn1','m-btn2','d-btn1','d-btn2'].forEach(id => {
@@ -1249,7 +1249,7 @@
     const dBtn = document.getElementById('d-btn' + n);
     if (mBtn) mBtn.classList.add('active');
     if (dBtn) dBtn.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (!skipScroll) window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function toggleBio(btn) {
@@ -1259,26 +1259,28 @@
   }
 
   /* Auto-switch to the current conference day and highlight live sessions */
-  function highlightNow() {
+  function highlightNow(scrollToNow) {
     const now = Math.floor(Date.now() / 1000);
 
-    // determine conference day (AEST = UTC+10)
+    // determine conference day (Sydney/AEST = UTC+10)
     // Day 1: 2026-05-27, Day 2: 2026-05-28
     const day1Start = 1748296800; // 2026-05-27 08:00 AEST
     const day1End   = 1748354400; // 2026-05-27 24:00 AEST
     const day2Start = 1748383200; // 2026-05-28 08:00 AEST
     const day2End   = 1748440800; // 2026-05-28 24:00 AEST
 
-    if (now >= day1Start && now < day1End) showDay(1);
-    else if (now >= day2Start && now < day2End) showDay(2);
+    if (now >= day1Start && now < day1End) showDay(1, scrollToNow);
+    else if (now >= day2Start && now < day2End) showDay(2, scrollToNow);
 
-    // highlight current slot cards
+    // highlight current slot cards and track the active slot
+    let nowSlot = null;
     document.querySelectorAll('.slot[data-start]').forEach(slot => {
       const start = parseInt(slot.dataset.start);
       const end   = parseInt(slot.dataset.end);
       const cards = slot.querySelectorAll('.card');
 
       if (now >= start && now < end) {
+        nowSlot = slot;
         cards.forEach(card => {
           if (!card.querySelector('.now-badge')) {
             const badge = document.createElement('div');
@@ -1296,9 +1298,14 @@
         });
       }
     });
+
+    // on initial load, scroll the active session into view
+    if (scrollToNow && nowSlot) {
+      nowSlot.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   }
 
-  highlightNow();
+  highlightNow(true);
   setInterval(highlightNow, 60000); // re-check every minute
 </script>
 
